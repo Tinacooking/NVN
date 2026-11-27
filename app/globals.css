@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Gallery Editorial Design Tokens (Light Default — Pure White Canvas) ─── */
+:root {
+  color-scheme: light;
+  --font: var(--font-sans-ui), -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  --font-serif: var(--font-serif-editorial), 'Songti SC', 'STSong', Georgia, serif;
+  --font-mono: var(--font-mono-data), 'SF Mono', 'Menlo', monospace;
+
+  /* Light Gallery Surface Hierarchy */
+  --bg-0: #FFFFFF;
+  --bg-1: #F8F8F6;
+  --bg-2: #F0EFEA;
+  --bg-inv: #0A0A0A;
+  --bg-card: #FFFFFF;
+  --bg-page: #FFFFFF;
+
+  /* Ink Text Hierarchy */
+  --tx-0: #0A0A0A;
+  --tx-1: #1A1A18;
+  --tx-2: #52524E;
+  --tx-3: #8C8C86;
+  --tx-inv: #F7F6F2;
+  --tx-inv2: rgba(247, 246, 242, 0.68);
+
+  /* Burnished Antique Gold Accent (10% budget) */
+  --ac: #B8922A;
+  --ac-dim: #8A6A18;
+  --ac-bg: rgba(184, 146, 42, 0.08);
+  --ac-bdr: rgba(184, 146, 42, 0.24);
+
+  /* Four Transformations Semantic Colors */
+  --lu: #1F7A4C;
+  --quan: #1D4ED8;
+  --ke: #9A7414;
+  --ji: #B42318;
+
+  /* Hairline Borders */
+  --bdr: rgba(10, 10, 10, 0.08);
+  --bdr-med: rgba(10, 10, 10, 0.13);
+  --bdr-heavy: rgba(10, 10, 10, 0.22);
+
+  /* Shadows */
+  --sh-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --sh-sm: 0 2px 10px rgba(0, 0, 0, 0.045);
+  --sh-md: 0 8px 28px rgba(0, 0, 0, 0.07);
+  --sh-lg: 0 18px 48px rgba(0, 0, 0, 0.09);
+
+  /* Legacy Component Tokens (--t-*) synced to Light Gallery */
+  --t-bg: #FFFFFF;
+  --t-surface: #F7F7F5;
+  --t-card: #FFFFFF;
+  --t-border: rgba(10, 10, 10, 0.09);
+  --t-text: #1A1A18;
+  --t-text1: #0A0A0A;
+  --t-text2: #52524E;
+  --t-faint: #8C8C86;
+  --t-gold: #9A7414;
+
+  /* Radius Scale */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+}
+
+/* ─── Obsidian Gallery Dark Mode Tokens ─── */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-0: #090B10;
+  --bg-1: #10131B;
+  --bg-2: #181D29;
+  --bg-inv: #F5F4F0;
+  --bg-card: #11151E;
+  --bg-page: #090B10;
+
+  --tx-0: #F4F3EE;
+  --tx-1: #E4E2DC;
+  --tx-2: #A6A8B3;
+  --tx-3: #6D7180;
+  --tx-inv: #090B10;
+  --tx-inv2: rgba(9, 11, 16, 0.68);
+
+  --ac: #D4A843;
+  --ac-dim: #E7C065;
+  --ac-bg: rgba(212, 168, 67, 0.12);
+  --ac-bdr: rgba(212, 168, 67, 0.28);
+
+  --lu: #34D399;
+  --quan: #60A5FA;
+  --ke: #FBBF24;
+  --ji: #F87171;
+
+  --bdr: rgba(255, 255, 255, 0.08);
+  --bdr-med: rgba(255, 255, 255, 0.14);
+  --bdr-heavy: rgba(255, 255, 255, 0.24);
+
+  --sh-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --sh-sm: 0 2px 10px rgba(0, 0, 0, 0.45);
+  --sh-md: 0 8px 28px rgba(0, 0, 0, 0.55);
+  --sh-lg: 0 18px 48px rgba(0, 0, 0, 0.65);
+
+  --t-bg: #0D1017;
+  --t-surface: #131722;
+  --t-card: #11151E;
+  --t-border: rgba(255, 255, 255, 0.09);
+  --t-text: #E4E2DC;
+  --t-text1: #F4F3EE;
+  --t-text2: #A6A8B3;
+  --t-faint: #75798A;
+  --t-gold: #D4A843;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg-0);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-0);
+  color: var(--tx-1);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+.font-editorial {
+  font-family: var(--font-serif);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Smooth theme switch */
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bdr-med); border-radius: 3px; }
+
+::selection {
+  background: rgba(184, 146, 42, 0.16);
+  color: var(--tx-0);
+}
+
+/* ─── Core Surface Classes (used across ChartBoard, InsightPanel, PatternsCard) ─── */
+.card-glass {
+  background: var(--bg-card);
+  border: 1px solid var(--bdr-med);
+  box-shadow: var(--sh-xs);
+}
+
+.card-inner {
+  background: var(--bg-1);
+  border: 1px solid var(--bdr);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-xs);
+}
+
+.card-flat {
+  background: var(--bg-card);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r-md);
+}
+
+.card-tinted {
+  background: var(--bg-1);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r-md);
+}
+
+.container-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (max-width: 768px) {
+  .container-page { padding: 0 16px; }
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--r-sm);
+  background: var(--tx-0);
+  color: var(--bg-0);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--tx-0);
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.12s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-primary:active { transform: scale(0.985); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--tx-1);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--bdr-med);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  background: var(--bg-1);
+  border-color: var(--bdr-heavy);
+}
+
+.input-base {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--bdr-med);
+  border-radius: var(--r-sm);
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--tx-1);
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.input-base:focus { border-color: var(--tx-0); }
+.input-base::placeholder { color: var(--tx-3); }
+
+/* Native select contrast in dark mode */
+[data-theme="dark"] select { color-scheme: dark; }
+[data-theme="dark"] select option { background-color: var(--bg-2); color: var(--tx-1); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: #0a0a0a; }
+  @page { margin: 1.2cm; size: A4 landscape; }
+}
